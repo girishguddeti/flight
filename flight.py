@@ -198,207 +198,207 @@ airport_delay.sort_values([('arr_delay','mean')], ascending=False).head(10)
 
 top_arr_delay = airport_delay['arr_delay']['size'] >= 1000       # only variable with sample size >= 1000 will be considered 
 
-airport_delay[top_arr_delay].sort_values([('arr_delay', 'mean')], ascending=False)[:10]
+# airport_delay[top_arr_delay].sort_values([('arr_delay', 'mean')], ascending=False)[:10]
 
-# """# Problem Statement _ Ontime Departure & Arrival Analysis"""
+# # """# Problem Statement _ Ontime Departure & Arrival Analysis"""
 
-# # Departure_Delay status classifications
+# # # Departure_Delay status classifications
 
-# flt_data_copy.loc[flt_data_copy['dep_delay'] <= 0, 'Status'] = 0
-# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 1, 'Status'] = 1
-# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 15, 'Status'] = 2
-# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 60, 'Status'] = 3
+# # flt_data_copy.loc[flt_data_copy['dep_delay'] <= 0, 'Status'] = 0
+# # flt_data_copy.loc[flt_data_copy['dep_delay'] >= 1, 'Status'] = 1
+# # flt_data_copy.loc[flt_data_copy['dep_delay'] >= 15, 'Status'] = 2
+# # flt_data_copy.loc[flt_data_copy['dep_delay'] >= 60, 'Status'] = 3
 
-# # Departure_Delay_status_graph
+# # # Departure_Delay_status_graph
 
-# # f,ax=plt.subplots(1,2,figsize=(20,10))
-# # flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
+# # # f,ax=plt.subplots(1,2,figsize=(20,10))
+# # # flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
                                                        
-# ax[1].set_title('% value of Deprture Delay Status')
-# # ax[1].set_ylabel('')
-# # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
-# # ax[0].set_title('Number of Departure Delay Status')
-# # plt.show()
+# # ax[1].set_title('% value of Deprture Delay Status')
+# # # ax[1].set_ylabel('')
+# # # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
+# # # ax[0].set_title('Number of Departure Delay Status')
+# # # plt.show()
 
-# # Arrival_Delay status classification
+# # # Arrival_Delay status classification
 
-# flt_data_copy.loc[flt_data_copy['arr_delay'] <= 0, 'Status'] = 0
-# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 1, 'Status'] = 1
-# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 15, 'Status'] = 2
-# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 60, 'Status'] = 3
+# # flt_data_copy.loc[flt_data_copy['arr_delay'] <= 0, 'Status'] = 0
+# # flt_data_copy.loc[flt_data_copy['arr_delay'] >= 1, 'Status'] = 1
+# # flt_data_copy.loc[flt_data_copy['arr_delay'] >= 15, 'Status'] = 2
+# # flt_data_copy.loc[flt_data_copy['arr_delay'] >= 60, 'Status'] = 3
 
-# ## Arrival_delay_status_graph
+# # ## Arrival_delay_status_graph
 
-# # f,ax=plt.subplots(1,2,figsize=(20,10))
+# # # f,ax=plt.subplots(1,2,figsize=(20,10))
 
-# flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
-# ax[1].set_title('% Value of Arrival Delay Status')
-# # ax[1].set_ylabel('')
-# # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
-# # ax[0].set_title('Number of Arrival Delay Status')
-# # plt.show()
+# # flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
+# # ax[1].set_title('% Value of Arrival Delay Status')
+# # # ax[1].set_ylabel('')
+# # # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
+# # # ax[0].set_title('Number of Arrival Delay Status')
+# # # plt.show()
 
-# Delayedflights = flt_data_copy[(flt_data_copy.Status >= 1) &(flt_data_copy.Status <= 3)]
+# # Delayedflights = flt_data_copy[(flt_data_copy.Status >= 1) &(flt_data_copy.Status <= 3)]
 
-# #Average arrival delay by carrier
-# # f,ax=plt.subplots(1,2,figsize=(20,8))
-# # sns.barplot('carrier','arr_delay', data=Delayedflights,ax=ax[0], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
-# #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
+# # #Average arrival delay by carrier
+# # # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # # sns.barplot('carrier','arr_delay', data=Delayedflights,ax=ax[0], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
+# # #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
                                                                                  
-# # ax[0].set_title('Average Arrival Delay by Carrier')
-# # sns.boxplot('carrier','arr_delay', data=Delayedflights,ax=ax[1], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
-# #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
-# # ax[1].set_title('Arrival Delay Distribution by Carrier')
-# # plt.close(2)
-# # plt.show()
+# # # ax[0].set_title('Average Arrival Delay by Carrier')
+# # # sns.boxplot('carrier','arr_delay', data=Delayedflights,ax=ax[1], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
+# # #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
+# # # ax[1].set_title('Arrival Delay Distribution by Carrier')
+# # # plt.close(2)
+# # # plt.show()
 
-# # print(['WN: Southwest Airlines', 'AA: American Airlines', 'MQ: American Eagle Airlines', 'UA: United Airlines',
-# #        'OO: Skywest Airlines','DL: Delta Airlines','US: US Airways','YV: Mesa Airlines', 'HA: Hawaiian Airlines',
-# #        'EV: Atlantic Southeast Airlines','FL: AirTran Airways','F9: Frontier Airlines','VX: Virgin America',
-# #        'B6: JetBlue Airways','9E: Pinnacle Airlines','AS: Alaska Airlines'])
+# # # print(['WN: Southwest Airlines', 'AA: American Airlines', 'MQ: American Eagle Airlines', 'UA: United Airlines',
+# # #        'OO: Skywest Airlines','DL: Delta Airlines','US: US Airways','YV: Mesa Airlines', 'HA: Hawaiian Airlines',
+# # #        'EV: Atlantic Southeast Airlines','FL: AirTran Airways','F9: Frontier Airlines','VX: Virgin America',
+# # #        'B6: JetBlue Airways','9E: Pinnacle Airlines','AS: Alaska Airlines'])
 
-# # print('\n')
-# # print('The top 5 US airline (American Airlines (AA), Southwest Airlines (WN), Delta Air Lines (DL), United Airlines (UA), Alaska Airlines (AS)generate an average delay of 37.2 minutes. Alaska Airlines, with an 34 minutes per flight, the second lowest of all the carriers.')
-# # print('\n')
-# # print('Carriers with higher average delay generation are Skywest Airlines(OO) with 60 minutes per flight,  Mesa Airlines (YV) with 50 minutes per flight, and Pinnacle Airlines (9E) with 49 minutes per flight. The error bar provide the insight that airlines with low number of flights having higher standard deviation distribution from the mean  (OO, HA, YV, F9, AS); so it seems like size matters.')
-# # print('\n')
-# # print('The boxplot shows, airlines with higher number of flights results having a higher chance of extreme waiting situation. American Eagle Airlines (MQ), American Airlines(AA), Delta Airline(DL) registered the maximum Carrier Delay for 2013 with an exception of Hawaiian Airlines (HA).')
+# # # print('\n')
+# # # print('The top 5 US airline (American Airlines (AA), Southwest Airlines (WN), Delta Air Lines (DL), United Airlines (UA), Alaska Airlines (AS)generate an average delay of 37.2 minutes. Alaska Airlines, with an 34 minutes per flight, the second lowest of all the carriers.')
+# # # print('\n')
+# # # print('Carriers with higher average delay generation are Skywest Airlines(OO) with 60 minutes per flight,  Mesa Airlines (YV) with 50 minutes per flight, and Pinnacle Airlines (9E) with 49 minutes per flight. The error bar provide the insight that airlines with low number of flights having higher standard deviation distribution from the mean  (OO, HA, YV, F9, AS); so it seems like size matters.')
+# # # print('\n')
+# # # print('The boxplot shows, airlines with higher number of flights results having a higher chance of extreme waiting situation. American Eagle Airlines (MQ), American Airlines(AA), Delta Airline(DL) registered the maximum Carrier Delay for 2013 with an exception of Hawaiian Airlines (HA).')
 
-# # # #Average departure delay by carrier
+# # # # #Average departure delay by carrier
 
-# f,ax=plt.subplots(1,2,figsize=(20,8))
-# sns.barplot('origin','dep_delay', data=Delayedflights,ax=ax[0], order=['EWR', 'JFK', 'LGA'])
+# # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # sns.barplot('origin','dep_delay', data=Delayedflights,ax=ax[0], order=['EWR', 'JFK', 'LGA'])
                                                                                  
-# ax[0].set_title('Airport Average Departure Delay')
-# sns.boxplot('origin','dep_delay', data=Delayedflights,ax=ax[1], order=['EWR', 'JFK', 'LGA'])
-# ax[1].set_title('Airport Delay Distribution')
-# # plt.close(2)
-# # plt.show()
+# # ax[0].set_title('Airport Average Departure Delay')
+# # sns.boxplot('origin','dep_delay', data=Delayedflights,ax=ax[1], order=['EWR', 'JFK', 'LGA'])
+# # ax[1].set_title('Airport Delay Distribution')
+# # # plt.close(2)
+# # # plt.show()
 
 
-# print('There seems to be a correlation between the number of flights operated and departure delay. A descending pattern can be seen from barplot for average departure delay per flight. Considering, the assumption that JFK being a busiest airport among 3 due to international flights; so the maximum departure delay for 2013 is registered by JFK.')
+# # print('There seems to be a correlation between the number of flights operated and departure delay. A descending pattern can be seen from barplot for average departure delay per flight. Considering, the assumption that JFK being a busiest airport among 3 due to international flights; so the maximum departure delay for 2013 is registered by JFK.')
 
-"""# Problem Statement _ Performance Analysis
-
-"""
-
-# scheduled_departure = flight_data.count()['sched_dep_time'] 
-# actual_departure = flight_data.count()['dep_time']  
-# cancel_departure = scheduled_departure - actual_departure
-# ratio_oper = actual_departure / scheduled_departure * 100
-
-# ratio_cancel = 100 - ratio_oper
-                                            
-# print("Sched_dep: ", scheduled_departure)
-# print("Operated: ", actual_departure)
-# print("Cancelled: ", cancel_departure)
-# print("\n")
-# print("Ratio operated flights over scheduled flights: %s" % ratio_oper)
-# print("Ratio of cancelled flights: %s" % ratio_cancel)
-
-# # The day and month having highest average delay departure by 
-
-# Delay_Day=flt_data_copy.groupby(['day','month'], as_index=False).agg({'dep_delay': 'mean'})
-# Delay_Day_max=Delay_Day['dep_delay'].max()
-# Delay_Day_info=Delay_Day[Delay_Day['dep_delay']==Delay_Day_max]
-# print("The day and month having highest delay by average for departures" '\n' ,Delay_Day_info)
-
-# # The day and month having highest number of flight delay
-
-# max_flightdelay_day=flt_data_copy[flt_data_copy['dep_delay'] > 0].groupby(['day','month'], as_index=False).agg({'flight': 'count'})
-# max_flightdelay_info = max_flightdelay_day[max_flightdelay_day['flight'].max() == max_flightdelay_day['flight']]
-# print("Day and month which have highest number of flight delay" '\n' ,max_flightdelay_info)
-
-# # histogram for arrival and departure delay
-
-# # f,ax=plt.subplots(1,2,figsize=(20,8))
-# # sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
-
-# # ax[0].set_title('Arrdelay_Status')
-
-# # sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
-# # ax[1].set_title('Depdelay_Status')
-# # plt.show()
-
-# print("Skewness_arr: %f" % Delayedflights['arr_delay'].skew())
-# print("Kurtosis_arr: %f" % Delayedflights['arr_delay'].kurt())
-# print("Skewness_dep: %f" % Delayedflights['dep_delay'].skew())
-# print("Kurtosis_dep: %f" % Delayedflights['dep_delay'].kurt())
-# print('\n')
-# print('It can be seen on the histogram and by the skewness and kurtosis indexes, that the skewness is >1 which reflect the data distribution is highly positively skewed and Kurtosis>3 shows the leptokurtic distribution, having longer and fatter tail with a central peak higher and sharper.') 
-# print('\n')
-# print('The histogram shows the delays are mostly located on the left side of the graph, with a long tail to the right. The majority of delays are short, and the longer delays, while unusual, are more heavy loaded in time.')
-
-# # Top5 destination where flight arrives early than expected arrival time
-
-# Ontime_Early_flights =flt_data_copy[(flt_data_copy.Status <= 0)]
-
-top10flight=(Ontime_Early_flights.sort_values(['arr_delay'], ascending=True)).head(10)
-top10flight_details=pd.DataFrame(top10flight, columns=['day','month','origin','dest','arr_delay','carrier','flight','tailnum','distance','flight_speed'])
-print("Top 5 destinations where flights arrives early than expected arrival time",'\n')
-
-
-#sns.lmplot(x = 'dest', y='arr_delay', data = top10flight_details, fit_reg=False, hue="flight")
-
-# plt.grid(True, color='k')
-
-# plt.show()
-
-# # Best airport in terms of early departure from NYC
-
-# airport_info = pd.DataFrame(flt_data_copy,columns=['day','month','dep_delay','arr_delay','carrier','origin','dest','flight'])
-# airport_origin = airport_info[airport_info['dep_delay']<0]
-# best_airport = airport_origin.sort_values(['dep_delay']).groupby(['origin']).agg({'dep_delay':'mean'})
-# # best_airport.plot(kind='bar',color='purple', title ="Best Airport in terms of early departure",figsize=(5,5),legend=True, fontsize=12)
-# # plt.show()
-# # plt.close()
-
-# # Line Graph for Avg_Monthly delay of a/c  and Number of minutes delayed by month (excluding staus 0)
-# # f,ax=plt.subplots(1,2,figsize=(20,8))
-# # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
-# # ax[0].set_title('Avg_Monthly delay ')
-# # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
-# # ax[1].set_title('Number of minutes delayed by Month')
-# # plt.show()
-
-# # Monthly_Delays of Ontime_Early_ Flights (only for status 0)
-
-# # f,ax=plt.subplots(1,2,figsize=(20,8))
-# # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
-# # ax[0].set_title('Avg_Monthly_ Minutes for Ontime_Early Flights for NYC airport ')
-
-
-# # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
-# # ax[1].set_title('Cumulative Monthly Minutes for Ontime_Early Flights for NYC airport')
-# # plt.grid(True, color='g',linewidth='0.2')
-# # plt.show()
-
-# """# Problem Statement_ Aircraft Speed Analysis
+# """# Problem Statement _ Performance Analysis
 
 # """
 
-# # Flight Speed Analysis 
+# # scheduled_departure = flight_data.count()['sched_dep_time'] 
+# # actual_departure = flight_data.count()['dep_time']  
+# # cancel_departure = scheduled_departure - actual_departure
+# # ratio_oper = actual_departure / scheduled_departure * 100
 
-# flight_speed =flt_data_copy['distance'] / (flt_data_copy['air_time']/60)
-# flt_data_copy['flight_speed'] =flight_speed
-# flt_data_copy.sort_values(by='flight_speed', ascending=False).head(5)
+# # ratio_cancel = 100 - ratio_oper
+                                            
+# # print("Sched_dep: ", scheduled_departure)
+# # print("Operated: ", actual_departure)
+# # print("Cancelled: ", cancel_departure)
+# # print("\n")
+# # print("Ratio operated flights over scheduled flights: %s" % ratio_oper)
+# # print("Ratio of cancelled flights: %s" % ratio_cancel)
 
-# # Top5 fastest flights details from NYC
+# # # The day and month having highest average delay departure by 
 
-# speed_5=flt_data_copy.loc[:, ['flight', 'tailnum','distance','air_time','flight_speed']].sort_values(by='flight_speed',ascending=False,axis=0).head(5)
-# # sns.lmplot(x = 'distance', y='flight_speed', data = speed_5, fit_reg=False, hue="flight")
-# # plt.grid(True, color='g', linewidth=0.1)
-# # plt.title("Top5 fastest flights from NYC")
+# # Delay_Day=flt_data_copy.groupby(['day','month'], as_index=False).agg({'dep_delay': 'mean'})
+# # Delay_Day_max=Delay_Day['dep_delay'].max()
+# # Delay_Day_info=Delay_Day[Delay_Day['dep_delay']==Delay_Day_max]
+# # print("The day and month having highest delay by average for departures" '\n' ,Delay_Day_info)
+
+# # # The day and month having highest number of flight delay
+
+# # max_flightdelay_day=flt_data_copy[flt_data_copy['dep_delay'] > 0].groupby(['day','month'], as_index=False).agg({'flight': 'count'})
+# # max_flightdelay_info = max_flightdelay_day[max_flightdelay_day['flight'].max() == max_flightdelay_day['flight']]
+# # print("Day and month which have highest number of flight delay" '\n' ,max_flightdelay_info)
+
+# # # histogram for arrival and departure delay
+
+# # # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # # sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
+
+# # # ax[0].set_title('Arrdelay_Status')
+
+# # # sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
+# # # ax[1].set_title('Depdelay_Status')
+# # # plt.show()
+
+# # print("Skewness_arr: %f" % Delayedflights['arr_delay'].skew())
+# # print("Kurtosis_arr: %f" % Delayedflights['arr_delay'].kurt())
+# # print("Skewness_dep: %f" % Delayedflights['dep_delay'].skew())
+# # print("Kurtosis_dep: %f" % Delayedflights['dep_delay'].kurt())
+# # print('\n')
+# # print('It can be seen on the histogram and by the skewness and kurtosis indexes, that the skewness is >1 which reflect the data distribution is highly positively skewed and Kurtosis>3 shows the leptokurtic distribution, having longer and fatter tail with a central peak higher and sharper.') 
+# # print('\n')
+# # print('The histogram shows the delays are mostly located on the left side of the graph, with a long tail to the right. The majority of delays are short, and the longer delays, while unusual, are more heavy loaded in time.')
+
+# # # Top5 destination where flight arrives early than expected arrival time
+
+# # Ontime_Early_flights =flt_data_copy[(flt_data_copy.Status <= 0)]
+
+# top10flight=(Ontime_Early_flights.sort_values(['arr_delay'], ascending=True)).head(10)
+# top10flight_details=pd.DataFrame(top10flight, columns=['day','month','origin','dest','arr_delay','carrier','flight','tailnum','distance','flight_speed'])
+# print("Top 5 destinations where flights arrives early than expected arrival time",'\n')
+
+
+# #sns.lmplot(x = 'dest', y='arr_delay', data = top10flight_details, fit_reg=False, hue="flight")
+
+# # plt.grid(True, color='k')
+
 # # plt.show()
-# speed_5
 
-# Carrier_hmap=flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute','DATE',
-#                               'time_hour','month','year','origin','dest','tailnum','Status',
-#                                  'distance','flight','air_time'], axis=1)
-# Carrier_hmap.head()
+# # # Best airport in terms of early departure from NYC
 
-# Carrier_hmap_OO = pd.pivot_table(Carrier_hmap,values='flight_speed', aggfunc='mean', index='carrier',columns='MONTH_desc')
-# Carrier_hmap_OO.head()
+# # airport_info = pd.DataFrame(flt_data_copy,columns=['day','month','dep_delay','arr_delay','carrier','origin','dest','flight'])
+# # airport_origin = airport_info[airport_info['dep_delay']<0]
+# # best_airport = airport_origin.sort_values(['dep_delay']).groupby(['origin']).agg({'dep_delay':'mean'})
+# # # best_airport.plot(kind='bar',color='purple', title ="Best Airport in terms of early departure",figsize=(5,5),legend=True, fontsize=12)
+# # # plt.show()
+# # # plt.close()
+
+# # # Line Graph for Avg_Monthly delay of a/c  and Number of minutes delayed by month (excluding staus 0)
+# # # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
+# # # ax[0].set_title('Avg_Monthly delay ')
+# # # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
+# # # ax[1].set_title('Number of minutes delayed by Month')
+# # # plt.show()
+
+# # # Monthly_Delays of Ontime_Early_ Flights (only for status 0)
+
+# # # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
+# # # ax[0].set_title('Avg_Monthly_ Minutes for Ontime_Early Flights for NYC airport ')
+
+
+# # # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
+# # # ax[1].set_title('Cumulative Monthly Minutes for Ontime_Early Flights for NYC airport')
+# # # plt.grid(True, color='g',linewidth='0.2')
+# # # plt.show()
+
+# # """# Problem Statement_ Aircraft Speed Analysis
+
+# # """
+
+# # # Flight Speed Analysis 
+
+# # flight_speed =flt_data_copy['distance'] / (flt_data_copy['air_time']/60)
+# # flt_data_copy['flight_speed'] =flight_speed
+# # flt_data_copy.sort_values(by='flight_speed', ascending=False).head(5)
+
+# # # Top5 fastest flights details from NYC
+
+# # speed_5=flt_data_copy.loc[:, ['flight', 'tailnum','distance','air_time','flight_speed']].sort_values(by='flight_speed',ascending=False,axis=0).head(5)
+# # # sns.lmplot(x = 'distance', y='flight_speed', data = speed_5, fit_reg=False, hue="flight")
+# # # plt.grid(True, color='g', linewidth=0.1)
+# # # plt.title("Top5 fastest flights from NYC")
+# # # plt.show()
+# # speed_5
+
+# # Carrier_hmap=flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute','DATE',
+# #                               'time_hour','month','year','origin','dest','tailnum','Status',
+# #                                  'distance','flight','air_time'], axis=1)
+# # Carrier_hmap.head()
+
+# # Carrier_hmap_OO = pd.pivot_table(Carrier_hmap,values='flight_speed', aggfunc='mean', index='carrier',columns='MONTH_desc')
+# # Carrier_hmap_OO.head()
 
 # plt.figure(figsize=(15,10))
 # sns.heatmap(Carrier_hmap_OO,annot=True, fmt=".1f")
