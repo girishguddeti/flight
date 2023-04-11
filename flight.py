@@ -200,71 +200,71 @@ top_arr_delay = airport_delay['arr_delay']['size'] >= 1000       # only variable
 
 airport_delay[top_arr_delay].sort_values([('arr_delay', 'mean')], ascending=False)[:10]
 
-"""# Problem Statement _ Ontime Departure & Arrival Analysis"""
+# """# Problem Statement _ Ontime Departure & Arrival Analysis"""
 
-# Departure_Delay status classifications
+# # Departure_Delay status classifications
 
-flt_data_copy.loc[flt_data_copy['dep_delay'] <= 0, 'Status'] = 0
-flt_data_copy.loc[flt_data_copy['dep_delay'] >= 1, 'Status'] = 1
-flt_data_copy.loc[flt_data_copy['dep_delay'] >= 15, 'Status'] = 2
-flt_data_copy.loc[flt_data_copy['dep_delay'] >= 60, 'Status'] = 3
+# flt_data_copy.loc[flt_data_copy['dep_delay'] <= 0, 'Status'] = 0
+# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 1, 'Status'] = 1
+# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 15, 'Status'] = 2
+# flt_data_copy.loc[flt_data_copy['dep_delay'] >= 60, 'Status'] = 3
 
-# Departure_Delay_status_graph
+# # Departure_Delay_status_graph
 
-# f,ax=plt.subplots(1,2,figsize=(20,10))
-# flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
+# # f,ax=plt.subplots(1,2,figsize=(20,10))
+# # flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
                                                        
-ax[1].set_title('% value of Deprture Delay Status')
-# ax[1].set_ylabel('')
-# sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
-# ax[0].set_title('Number of Departure Delay Status')
-# plt.show()
+# ax[1].set_title('% value of Deprture Delay Status')
+# # ax[1].set_ylabel('')
+# # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
+# # ax[0].set_title('Number of Departure Delay Status')
+# # plt.show()
 
-# Arrival_Delay status classification
+# # Arrival_Delay status classification
 
-flt_data_copy.loc[flt_data_copy['arr_delay'] <= 0, 'Status'] = 0
-flt_data_copy.loc[flt_data_copy['arr_delay'] >= 1, 'Status'] = 1
-flt_data_copy.loc[flt_data_copy['arr_delay'] >= 15, 'Status'] = 2
-flt_data_copy.loc[flt_data_copy['arr_delay'] >= 60, 'Status'] = 3
+# flt_data_copy.loc[flt_data_copy['arr_delay'] <= 0, 'Status'] = 0
+# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 1, 'Status'] = 1
+# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 15, 'Status'] = 2
+# flt_data_copy.loc[flt_data_copy['arr_delay'] >= 60, 'Status'] = 3
 
-## Arrival_delay_status_graph
+# ## Arrival_delay_status_graph
 
-# f,ax=plt.subplots(1,2,figsize=(20,10))
+# # f,ax=plt.subplots(1,2,figsize=(20,10))
 
-flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
-ax[1].set_title('% Value of Arrival Delay Status')
-# ax[1].set_ylabel('')
-# sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
-# ax[0].set_title('Number of Arrival Delay Status')
-# plt.show()
+# flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
+# ax[1].set_title('% Value of Arrival Delay Status')
+# # ax[1].set_ylabel('')
+# # sns.countplot('Status',order = flt_data_copy['Status'].value_counts().index, data=flt_data_copy,ax=ax[0])
+# # ax[0].set_title('Number of Arrival Delay Status')
+# # plt.show()
 
-Delayedflights = flt_data_copy[(flt_data_copy.Status >= 1) &(flt_data_copy.Status <= 3)]
+# Delayedflights = flt_data_copy[(flt_data_copy.Status >= 1) &(flt_data_copy.Status <= 3)]
 
-#Average arrival delay by carrier
-# f,ax=plt.subplots(1,2,figsize=(20,8))
-# sns.barplot('carrier','arr_delay', data=Delayedflights,ax=ax[0], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
-#                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
+# #Average arrival delay by carrier
+# # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # sns.barplot('carrier','arr_delay', data=Delayedflights,ax=ax[0], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
+# #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
                                                                                  
-# ax[0].set_title('Average Arrival Delay by Carrier')
-# sns.boxplot('carrier','arr_delay', data=Delayedflights,ax=ax[1], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
-#                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
-# ax[1].set_title('Arrival Delay Distribution by Carrier')
-# plt.close(2)
-# plt.show()
+# # ax[0].set_title('Average Arrival Delay by Carrier')
+# # sns.boxplot('carrier','arr_delay', data=Delayedflights,ax=ax[1], order=['F9', 'FL', 'EV', 'YV','OO','MQ','WN','B6',
+# #                                                                                 '9E','UA', 'US','VX','DL', 'AA','HA','AS'])
+# # ax[1].set_title('Arrival Delay Distribution by Carrier')
+# # plt.close(2)
+# # plt.show()
 
-# print(['WN: Southwest Airlines', 'AA: American Airlines', 'MQ: American Eagle Airlines', 'UA: United Airlines',
-#        'OO: Skywest Airlines','DL: Delta Airlines','US: US Airways','YV: Mesa Airlines', 'HA: Hawaiian Airlines',
-#        'EV: Atlantic Southeast Airlines','FL: AirTran Airways','F9: Frontier Airlines','VX: Virgin America',
-#        'B6: JetBlue Airways','9E: Pinnacle Airlines','AS: Alaska Airlines'])
+# # print(['WN: Southwest Airlines', 'AA: American Airlines', 'MQ: American Eagle Airlines', 'UA: United Airlines',
+# #        'OO: Skywest Airlines','DL: Delta Airlines','US: US Airways','YV: Mesa Airlines', 'HA: Hawaiian Airlines',
+# #        'EV: Atlantic Southeast Airlines','FL: AirTran Airways','F9: Frontier Airlines','VX: Virgin America',
+# #        'B6: JetBlue Airways','9E: Pinnacle Airlines','AS: Alaska Airlines'])
 
-# print('\n')
-# print('The top 5 US airline (American Airlines (AA), Southwest Airlines (WN), Delta Air Lines (DL), United Airlines (UA), Alaska Airlines (AS)generate an average delay of 37.2 minutes. Alaska Airlines, with an 34 minutes per flight, the second lowest of all the carriers.')
-# print('\n')
-# print('Carriers with higher average delay generation are Skywest Airlines(OO) with 60 minutes per flight,  Mesa Airlines (YV) with 50 minutes per flight, and Pinnacle Airlines (9E) with 49 minutes per flight. The error bar provide the insight that airlines with low number of flights having higher standard deviation distribution from the mean  (OO, HA, YV, F9, AS); so it seems like size matters.')
-# print('\n')
-# print('The boxplot shows, airlines with higher number of flights results having a higher chance of extreme waiting situation. American Eagle Airlines (MQ), American Airlines(AA), Delta Airline(DL) registered the maximum Carrier Delay for 2013 with an exception of Hawaiian Airlines (HA).')
+# # print('\n')
+# # print('The top 5 US airline (American Airlines (AA), Southwest Airlines (WN), Delta Air Lines (DL), United Airlines (UA), Alaska Airlines (AS)generate an average delay of 37.2 minutes. Alaska Airlines, with an 34 minutes per flight, the second lowest of all the carriers.')
+# # print('\n')
+# # print('Carriers with higher average delay generation are Skywest Airlines(OO) with 60 minutes per flight,  Mesa Airlines (YV) with 50 minutes per flight, and Pinnacle Airlines (9E) with 49 minutes per flight. The error bar provide the insight that airlines with low number of flights having higher standard deviation distribution from the mean  (OO, HA, YV, F9, AS); so it seems like size matters.')
+# # print('\n')
+# # print('The boxplot shows, airlines with higher number of flights results having a higher chance of extreme waiting situation. American Eagle Airlines (MQ), American Airlines(AA), Delta Airline(DL) registered the maximum Carrier Delay for 2013 with an exception of Hawaiian Airlines (HA).')
 
-# # #Average departure delay by carrier
+# # # #Average departure delay by carrier
 
 # f,ax=plt.subplots(1,2,figsize=(20,8))
 # sns.barplot('origin','dep_delay', data=Delayedflights,ax=ax[0], order=['EWR', 'JFK', 'LGA'])
