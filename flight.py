@@ -282,56 +282,56 @@ airport_delay[top_arr_delay].sort_values([('arr_delay', 'mean')], ascending=Fals
 
 """
 
-scheduled_departure = flight_data.count()['sched_dep_time'] 
-actual_departure = flight_data.count()['dep_time']  
-cancel_departure = scheduled_departure - actual_departure
-ratio_oper = actual_departure / scheduled_departure * 100
+# scheduled_departure = flight_data.count()['sched_dep_time'] 
+# actual_departure = flight_data.count()['dep_time']  
+# cancel_departure = scheduled_departure - actual_departure
+# ratio_oper = actual_departure / scheduled_departure * 100
 
-ratio_cancel = 100 - ratio_oper
+# ratio_cancel = 100 - ratio_oper
                                             
-print("Sched_dep: ", scheduled_departure)
-print("Operated: ", actual_departure)
-print("Cancelled: ", cancel_departure)
-print("\n")
-print("Ratio operated flights over scheduled flights: %s" % ratio_oper)
-print("Ratio of cancelled flights: %s" % ratio_cancel)
+# print("Sched_dep: ", scheduled_departure)
+# print("Operated: ", actual_departure)
+# print("Cancelled: ", cancel_departure)
+# print("\n")
+# print("Ratio operated flights over scheduled flights: %s" % ratio_oper)
+# print("Ratio of cancelled flights: %s" % ratio_cancel)
 
-# The day and month having highest average delay departure by 
+# # The day and month having highest average delay departure by 
 
-Delay_Day=flt_data_copy.groupby(['day','month'], as_index=False).agg({'dep_delay': 'mean'})
-Delay_Day_max=Delay_Day['dep_delay'].max()
-Delay_Day_info=Delay_Day[Delay_Day['dep_delay']==Delay_Day_max]
-print("The day and month having highest delay by average for departures" '\n' ,Delay_Day_info)
+# Delay_Day=flt_data_copy.groupby(['day','month'], as_index=False).agg({'dep_delay': 'mean'})
+# Delay_Day_max=Delay_Day['dep_delay'].max()
+# Delay_Day_info=Delay_Day[Delay_Day['dep_delay']==Delay_Day_max]
+# print("The day and month having highest delay by average for departures" '\n' ,Delay_Day_info)
 
-# The day and month having highest number of flight delay
+# # The day and month having highest number of flight delay
 
-max_flightdelay_day=flt_data_copy[flt_data_copy['dep_delay'] > 0].groupby(['day','month'], as_index=False).agg({'flight': 'count'})
-max_flightdelay_info = max_flightdelay_day[max_flightdelay_day['flight'].max() == max_flightdelay_day['flight']]
-print("Day and month which have highest number of flight delay" '\n' ,max_flightdelay_info)
+# max_flightdelay_day=flt_data_copy[flt_data_copy['dep_delay'] > 0].groupby(['day','month'], as_index=False).agg({'flight': 'count'})
+# max_flightdelay_info = max_flightdelay_day[max_flightdelay_day['flight'].max() == max_flightdelay_day['flight']]
+# print("Day and month which have highest number of flight delay" '\n' ,max_flightdelay_info)
 
-# histogram for arrival and departure delay
+# # histogram for arrival and departure delay
 
-# f,ax=plt.subplots(1,2,figsize=(20,8))
-# sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
+# # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
 
-# ax[0].set_title('Arrdelay_Status')
+# # ax[0].set_title('Arrdelay_Status')
 
-# sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
-# ax[1].set_title('Depdelay_Status')
-# plt.show()
+# # sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
+# # ax[1].set_title('Depdelay_Status')
+# # plt.show()
 
-print("Skewness_arr: %f" % Delayedflights['arr_delay'].skew())
-print("Kurtosis_arr: %f" % Delayedflights['arr_delay'].kurt())
-print("Skewness_dep: %f" % Delayedflights['dep_delay'].skew())
-print("Kurtosis_dep: %f" % Delayedflights['dep_delay'].kurt())
-print('\n')
-print('It can be seen on the histogram and by the skewness and kurtosis indexes, that the skewness is >1 which reflect the data distribution is highly positively skewed and Kurtosis>3 shows the leptokurtic distribution, having longer and fatter tail with a central peak higher and sharper.') 
-print('\n')
-print('The histogram shows the delays are mostly located on the left side of the graph, with a long tail to the right. The majority of delays are short, and the longer delays, while unusual, are more heavy loaded in time.')
+# print("Skewness_arr: %f" % Delayedflights['arr_delay'].skew())
+# print("Kurtosis_arr: %f" % Delayedflights['arr_delay'].kurt())
+# print("Skewness_dep: %f" % Delayedflights['dep_delay'].skew())
+# print("Kurtosis_dep: %f" % Delayedflights['dep_delay'].kurt())
+# print('\n')
+# print('It can be seen on the histogram and by the skewness and kurtosis indexes, that the skewness is >1 which reflect the data distribution is highly positively skewed and Kurtosis>3 shows the leptokurtic distribution, having longer and fatter tail with a central peak higher and sharper.') 
+# print('\n')
+# print('The histogram shows the delays are mostly located on the left side of the graph, with a long tail to the right. The majority of delays are short, and the longer delays, while unusual, are more heavy loaded in time.')
 
-# Top5 destination where flight arrives early than expected arrival time
+# # Top5 destination where flight arrives early than expected arrival time
 
-Ontime_Early_flights =flt_data_copy[(flt_data_copy.Status <= 0)]
+# Ontime_Early_flights =flt_data_copy[(flt_data_copy.Status <= 0)]
 
 top10flight=(Ontime_Early_flights.sort_values(['arr_delay'], ascending=True)).head(10)
 top10flight_details=pd.DataFrame(top10flight, columns=['day','month','origin','dest','arr_delay','carrier','flight','tailnum','distance','flight_speed'])
