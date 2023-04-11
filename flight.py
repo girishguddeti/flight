@@ -211,8 +211,8 @@ flt_data_copy.loc[flt_data_copy['dep_delay'] >= 60, 'Status'] = 3
 
 # Departure_Delay_status_graph
 
-f,ax=plt.subplots(1,2,figsize=(20,10))
-flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
+# f,ax=plt.subplots(1,2,figsize=(20,10))
+# flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
                                                        
 ax[1].set_title('% value of Deprture Delay Status')
 # ax[1].set_ylabel('')
