@@ -14,7 +14,7 @@ import pandas as pd
 import streamlit as st
 
 #import matplotlib.pyplot as plt
-import seaborn as sns
+#import seaborn as sns
 
 
 # %matplotlib inline
@@ -67,14 +67,14 @@ carrier_count
 
 #Graphical representation of carriers scheduled flights in numbers and %
 
-f,ax=plt.subplots(1,2,figsize=(20,10))
-flight_data['carrier'].value_counts().plot.pie(autopct='%1.2f%%',ax=ax[1],shadow=False)                                                  
-ax[1].set_title('Flight % of Carrier')
-# ax[1].set_ylabel('')
-# sns.countplot('carrier',order = flight_data['carrier'].value_counts().index, data=flight_data,ax=ax[0])
-# ax[0].set_title('Frequency Distribution of Carriers')
-# ax[0].set_ylabel('Number of Flights')
-st.pyplot(f)
+# f,ax=plt.subplots(1,2,figsize=(20,10))
+# flight_data['carrier'].value_counts().plot.pie(autopct='%1.2f%%',ax=ax[1],shadow=False)                                                  
+# ax[1].set_title('Flight % of Carrier')
+# # ax[1].set_ylabel('')
+# # sns.countplot('carrier',order = flight_data['carrier'].value_counts().index, data=flight_data,ax=ax[0])
+# # ax[0].set_title('Frequency Distribution of Carriers')
+# # ax[0].set_ylabel('Number of Flights')
+# st.pyplot(f)
 
 # Number of scheduled departure from different origin
 
@@ -85,15 +85,15 @@ print('\n')
 
 flt_data_copy['origin'].value_counts()
 
-origin_count = flt_data_copy['origin'].value_counts()
-f,ax=plt.subplots(1,2,figsize=(20,10))
-flt_data_copy['origin'].value_counts().plot.pie(autopct='%1.2f%%',ax=ax[1],shadow=False)                                                  
-ax[1].set_title('Percentage of Flt from Origin')
-# ax[1].set_ylabel('')
-# sns.countplot('origin',order = flt_data_copy['origin'].value_counts().index, data=flt_data_copy,ax=ax[0])
-# ax[0].set_title('Frequency Distribution of Flt from Origin')
-# ax[0].set_ylabel('Flight Count')
-plt.show()
+# origin_count = flt_data_copy['origin'].value_counts()
+# f,ax=plt.subplots(1,2,figsize=(20,10))
+# flt_data_copy['origin'].value_counts().plot.pie(autopct='%1.2f%%',ax=ax[1],shadow=False)                                                  
+# ax[1].set_title('Percentage of Flt from Origin')
+# # ax[1].set_ylabel('')
+# # sns.countplot('origin',order = flt_data_copy['origin'].value_counts().index, data=flt_data_copy,ax=ax[0])
+# # ax[0].set_title('Frequency Distribution of Flt from Origin')
+# # ax[0].set_ylabel('Flight Count')
+# plt.show()
 
 # Number of scheduled arrival at unique destination
 
@@ -118,11 +118,11 @@ dest_count=flight_data.groupby(['dest'],as_index=False).agg({'month':'count'})
 max_dest_count=dest_count.sort_values(['month'], ascending=False)
 print("The top_10 destination flight from NYC are")
 top_dest_flight = max_dest_count.head(10)
-plt.scatter(top_dest_flight.dest,top_dest_flight.month, color='red')
-plt.legend
-plt.grid(True, color='g', linewidth=1)
-plt.show()
-top_dest_flight
+# plt.scatter(top_dest_flight.dest,top_dest_flight.month, color='red')
+# plt.legend
+# plt.grid(True, color='g', linewidth=1)
+# plt.show()
+# top_dest_flight
 
 #  Maximum number of flights headed to unique destination from Origin.
 
@@ -157,9 +157,9 @@ Monthly_Avg_Delay.head(15)
 monthly_delay = flight_data.groupby(['month'], as_index=False).agg({'dep_delay': 'mean'})
 monthly_delay['dep_delay']=np.round(monthly_delay['dep_delay'],0)
 # sns.catplot(x='month', y='dep_delay',data=monthly_delay, kind='bar')
-plt.title("Monthly Average Departure Delay") 
-plt.plot()
-plt.show()
+# plt.title("Monthly Average Departure Delay") 
+# plt.plot()
+# plt.show()
 
 #Avg_arr_delay_sort by Carrier in 2013 (inclusive early arrival)
 
@@ -229,7 +229,7 @@ flt_data_copy.loc[flt_data_copy['arr_delay'] >= 60, 'Status'] = 3
 
 ## Arrival_delay_status_graph
 
-f,ax=plt.subplots(1,2,figsize=(20,10))
+# f,ax=plt.subplots(1,2,figsize=(20,10))
 
 flt_data_copy['Status'].value_counts().plot.pie(explode=[0,0.1,0.1,0.1],autopct='%1.2f%%',ax=ax[1],shadow=False)
 ax[1].set_title('% Value of Arrival Delay Status')
@@ -311,14 +311,14 @@ print("Day and month which have highest number of flight delay" '\n' ,max_flight
 
 # histogram for arrival and departure delay
 
-f,ax=plt.subplots(1,2,figsize=(20,8))
-sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
+# f,ax=plt.subplots(1,2,figsize=(20,8))
+# sns.distplot(Delayedflights['arr_delay'], ax=ax[0])
 
-ax[0].set_title('Arrdelay_Status')
+# ax[0].set_title('Arrdelay_Status')
 
-sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
-ax[1].set_title('Depdelay_Status')
-plt.show()
+# sns.distplot(Delayedflights['dep_delay'], ax=ax[1])
+# ax[1].set_title('Depdelay_Status')
+# plt.show()
 
 print("Skewness_arr: %f" % Delayedflights['arr_delay'].skew())
 print("Kurtosis_arr: %f" % Delayedflights['arr_delay'].kurt())
@@ -340,84 +340,84 @@ print("Top 5 destinations where flights arrives early than expected arrival time
 
 #sns.lmplot(x = 'dest', y='arr_delay', data = top10flight_details, fit_reg=False, hue="flight")
 
-plt.grid(True, color='k')
+# plt.grid(True, color='k')
 
-plt.show()
+# plt.show()
 
-# Best airport in terms of early departure from NYC
+# # Best airport in terms of early departure from NYC
 
-airport_info = pd.DataFrame(flt_data_copy,columns=['day','month','dep_delay','arr_delay','carrier','origin','dest','flight'])
-airport_origin = airport_info[airport_info['dep_delay']<0]
-best_airport = airport_origin.sort_values(['dep_delay']).groupby(['origin']).agg({'dep_delay':'mean'})
-best_airport.plot(kind='bar',color='purple', title ="Best Airport in terms of early departure",figsize=(5,5),legend=True, fontsize=12)
-plt.show()
-plt.close()
+# airport_info = pd.DataFrame(flt_data_copy,columns=['day','month','dep_delay','arr_delay','carrier','origin','dest','flight'])
+# airport_origin = airport_info[airport_info['dep_delay']<0]
+# best_airport = airport_origin.sort_values(['dep_delay']).groupby(['origin']).agg({'dep_delay':'mean'})
+# # best_airport.plot(kind='bar',color='purple', title ="Best Airport in terms of early departure",figsize=(5,5),legend=True, fontsize=12)
+# # plt.show()
+# # plt.close()
 
-# Line Graph for Avg_Monthly delay of a/c  and Number of minutes delayed by month (excluding staus 0)
-f,ax=plt.subplots(1,2,figsize=(20,8))
-Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
-ax[0].set_title('Avg_Monthly delay ')
-Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
-ax[1].set_title('Number of minutes delayed by Month')
-plt.show()
+# # Line Graph for Avg_Monthly delay of a/c  and Number of minutes delayed by month (excluding staus 0)
+# # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
+# # ax[0].set_title('Avg_Monthly delay ')
+# # Delayedflights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
+# # ax[1].set_title('Number of minutes delayed by Month')
+# # plt.show()
 
-# Monthly_Delays of Ontime_Early_ Flights (only for status 0)
+# # Monthly_Delays of Ontime_Early_ Flights (only for status 0)
 
-f,ax=plt.subplots(1,2,figsize=(20,8))
-Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
-ax[0].set_title('Avg_Monthly_ Minutes for Ontime_Early Flights for NYC airport ')
-
-
-Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
-ax[1].set_title('Cumulative Monthly Minutes for Ontime_Early Flights for NYC airport')
-plt.grid(True, color='g',linewidth='0.2')
-plt.show()
-
-"""# Problem Statement_ Aircraft Speed Analysis
-
-"""
-
-# Flight Speed Analysis 
-
-flight_speed =flt_data_copy['distance'] / (flt_data_copy['air_time']/60)
-flt_data_copy['flight_speed'] =flight_speed
-flt_data_copy.sort_values(by='flight_speed', ascending=False).head(5)
-
-# Top5 fastest flights details from NYC
-
-speed_5=flt_data_copy.loc[:, ['flight', 'tailnum','distance','air_time','flight_speed']].sort_values(by='flight_speed',ascending=False,axis=0).head(5)
-sns.lmplot(x = 'distance', y='flight_speed', data = speed_5, fit_reg=False, hue="flight")
-plt.grid(True, color='g', linewidth=0.1)
-plt.title("Top5 fastest flights from NYC")
-plt.show()
-speed_5
-
-Carrier_hmap=flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute','DATE',
-                              'time_hour','month','year','origin','dest','tailnum','Status',
-                                 'distance','flight','air_time'], axis=1)
-Carrier_hmap.head()
-
-Carrier_hmap_OO = pd.pivot_table(Carrier_hmap,values='flight_speed', aggfunc='mean', index='carrier',columns='MONTH_desc')
-Carrier_hmap_OO.head()
-
-plt.figure(figsize=(15,10))
-sns.heatmap(Carrier_hmap_OO,annot=True, fmt=".1f")
-plt.show()
-print('The peak season for air travel in USA is considered to be June to August  and lean season is mid of January to February. The airlines operate highest number of flights and carry maximum PAX load during the summer season and vis-à-vis during lean season. The data proves that the statement is true and most of the airlines having maximum departure between May to August and minimum between January to February. From, the heatmap, it is visible that during May to August most of the airlines tend to fly faster than normal flight speed, to cover maximum departure. Whereas, it is vis-à-vis during lean season.')
-
-Airlines_info= sns.pairplot(flt_data_copy, height=3,
-                            vars=['dep_delay','arr_delay','distance','air_time','flight_speed'], hue='carrier', palette="Paired")
-plt.show(Airlines_info)
-
-flt_corr= flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute',
-                              'time_hour','DATE','MONTH_desc','year','flight'], axis=1)
-
-corrmat = flt_corr.corr()
-f, ax = plt.subplots(figsize=(12, 9))
-
-sns.heatmap(corrmat, square=True, cmap="RdYlGn",linewidth=1,annot=True,fmt='.2f');
-plt.show()
+# # f,ax=plt.subplots(1,2,figsize=(20,8))
+# # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).mean().plot(ax=ax[0],marker='*', linestyle='dashed',color ='g'+'r')
+# # ax[0].set_title('Avg_Monthly_ Minutes for Ontime_Early Flights for NYC airport ')
 
 
+# # Ontime_Early_flights[['month','arr_delay','dep_delay']].groupby(['month']).sum().plot(ax=ax[1], marker='*', linestyle='dashed',color ='g'+'r')
+# # ax[1].set_title('Cumulative Monthly Minutes for Ontime_Early Flights for NYC airport')
+# # plt.grid(True, color='g',linewidth='0.2')
+# # plt.show()
 
-print('The coorelation matrix provide the result that the departure and arrival delay are positively and strongly coorelated. Similarly with air time and flight distance; So they tend to move in the same direction. Whereas  correlation between fightspeed, airtime, flightdistance are positive but not so strong enough to influence each other.')
+# """# Problem Statement_ Aircraft Speed Analysis
+
+# """
+
+# # Flight Speed Analysis 
+
+# flight_speed =flt_data_copy['distance'] / (flt_data_copy['air_time']/60)
+# flt_data_copy['flight_speed'] =flight_speed
+# flt_data_copy.sort_values(by='flight_speed', ascending=False).head(5)
+
+# # Top5 fastest flights details from NYC
+
+# speed_5=flt_data_copy.loc[:, ['flight', 'tailnum','distance','air_time','flight_speed']].sort_values(by='flight_speed',ascending=False,axis=0).head(5)
+# # sns.lmplot(x = 'distance', y='flight_speed', data = speed_5, fit_reg=False, hue="flight")
+# # plt.grid(True, color='g', linewidth=0.1)
+# # plt.title("Top5 fastest flights from NYC")
+# # plt.show()
+# speed_5
+
+# Carrier_hmap=flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute','DATE',
+#                               'time_hour','month','year','origin','dest','tailnum','Status',
+#                                  'distance','flight','air_time'], axis=1)
+# Carrier_hmap.head()
+
+# Carrier_hmap_OO = pd.pivot_table(Carrier_hmap,values='flight_speed', aggfunc='mean', index='carrier',columns='MONTH_desc')
+# Carrier_hmap_OO.head()
+
+# plt.figure(figsize=(15,10))
+# sns.heatmap(Carrier_hmap_OO,annot=True, fmt=".1f")
+# plt.show()
+# print('The peak season for air travel in USA is considered to be June to August  and lean season is mid of January to February. The airlines operate highest number of flights and carry maximum PAX load during the summer season and vis-à-vis during lean season. The data proves that the statement is true and most of the airlines having maximum departure between May to August and minimum between January to February. From, the heatmap, it is visible that during May to August most of the airlines tend to fly faster than normal flight speed, to cover maximum departure. Whereas, it is vis-à-vis during lean season.')
+
+# Airlines_info= sns.pairplot(flt_data_copy, height=3,
+#                             vars=['dep_delay','arr_delay','distance','air_time','flight_speed'], hue='carrier', palette="Paired")
+# plt.show(Airlines_info)
+
+# flt_corr= flt_data_copy.drop(['dep_time','sched_dep_time','arr_time','sched_arr_time','hour','minute',
+#                               'time_hour','DATE','MONTH_desc','year','flight'], axis=1)
+
+# corrmat = flt_corr.corr()
+# f, ax = plt.subplots(figsize=(12, 9))
+
+# sns.heatmap(corrmat, square=True, cmap="RdYlGn",linewidth=1,annot=True,fmt='.2f');
+# plt.show()
+
+
+
+# print('The coorelation matrix provide the result that the departure and arrival delay are positively and strongly coorelated. Similarly with air time and flight distance; So they tend to move in the same direction. Whereas  correlation between fightspeed, airtime, flightdistance are positive but not so strong enough to influence each other.')
