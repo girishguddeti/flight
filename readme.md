@@ -14,3 +14,4 @@ arrival and departure delays.
 The model also analyzed on-time departure and arrival data and provided a performance
 analysis. The findings of this study can be used to improve the efficiency of airport and airline
 operations, resulting in a better travel experience for passengers.
+<img width="579" alt="image" src="https://user-images.githubusercontent.com/130492978/235818829-e911f887-2481-474b-a541-234748f56ea9.png">
